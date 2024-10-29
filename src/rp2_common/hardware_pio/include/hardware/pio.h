@@ -660,7 +660,11 @@ static inline void sm_config_set_mov_status(pio_sm_config *c, enum pio_mov_statu
  * \return the default state machine configuration which can then be modified.
  */
 static inline pio_sm_config pio_get_default_sm_config(void) {
-    pio_sm_config c = {0};
+    pio_sm_config c;
+    c.clkdiv = 0;
+    c.execctrl = 0;
+    c.shiftctrl = 0;
+    c.pinctrl = 0;
 #if PICO_PIO_USE_GPIO_BASE
     c.pinhi = -1;
 #endif
